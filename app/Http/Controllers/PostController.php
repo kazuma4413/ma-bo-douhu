@@ -42,5 +42,20 @@ class PostController extends Controller
 
         return redirect('/posts/' . $post->id);
     }
+    public function search(Request $request)
+        {
+        $keyword = $request->input('keyword');
+
+        $query = Post::query();
+
+        if(!empty($keyword)) {
+            $query->where('title', 'LIKE', "%{$keyword}%")
+                ->orWhere('author', 'LIKE', "%{$keyword}%");
+        }
+
+        $posts = $query->get();
+
+        return view('index', compact('posts', 'keyword'));
+        }
 
 }
