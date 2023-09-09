@@ -50,12 +50,14 @@ class PostController extends Controller
 
         if(!empty($keyword)) {
             $query->where('title', 'LIKE', "%{$keyword}%")
-                ->orWhere('author', 'LIKE', "%{$keyword}%");
+                ->orWhere('body', 'LIKE', "%{$keyword}%");
         }
 
         $posts = $query->get();
-
-        return view('index', compact('posts', 'keyword'));
+        
+        return view('posts/index', compact('posts', 'keyword'));
         }
+    
+        
 
 }
