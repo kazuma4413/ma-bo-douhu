@@ -8,6 +8,12 @@
     </head>
     <body>
         <h1>チーム開発会へようこそ！</h1>
+        <div>
+            <form action="{{ route('posts.index') }}" method="GET">
+            <input type="text" name="keyword" value="{{ $keyword }}">
+            <input type="submit" value="検索">
+            </form>
+        </div>
         <h2>投稿一覧画面</h2>
         <a href='/posts/create'>新規投稿</a>
         <div>
