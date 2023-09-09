@@ -5,8 +5,8 @@
          </x-slot>
         <h1>チーム開発会へようこそ！</h1>
         <div>
-            <form action="{{ route('posts.index') }}" method="GET">
-            <input type="text" name="keyword" value="{{ $keyword }}">
+            <form action="{{ route('search') }}" method="GET">
+            <input type="text" name="keyword" >
             <input type="submit" value="検索">
             </form>
         </div>
@@ -22,9 +22,7 @@
                 </div>
             @endforeach
         </div>
-        <div>
-            {{ $posts->links() }}
-        </div>
+        
         </x-app-layout>
     </body>
 </html>
