@@ -10,8 +10,8 @@
         　　チーム開発
         　　 </x-slot>
         <h1>チーム開発会へようこそ！</h1>
-        <h2>投稿作成</h2>
-        <form action="/posts" method="POST" enctype="multipart/form-data" >
+        <h2>サークル投稿作成</h2>
+        <form action="/posts/store/2" method="POST" enctype="multipart/form-data" >
             @csrf
             <div>
                 <h2>タイトル</h2>

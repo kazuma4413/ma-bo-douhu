@@ -13,8 +13,9 @@ Route::get('/dashboard', function () {
 
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
-    Route::post('/posts', 'store')->name('store');
-    Route::get('/posts/create', 'create')->name('create');
+    Route::post('/posts/store/{judge}', 'store')->name('store');
+    Route::get('/posts/create/semi', 'semi_create')->name('semi_create');
+    Route::get('/posts/create/circle', 'circle_create')->name('circle_create');
     Route::get('/posts/search', 'search')->name('search');
     Route::get('/posts/{post}', 'show')->name('show');
     Route::put('/posts/{post}', 'update')->name('update');

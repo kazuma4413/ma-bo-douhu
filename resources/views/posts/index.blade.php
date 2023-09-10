@@ -5,8 +5,8 @@
          </x-slot>
         <h1>チーム開発会へようこそ！</h1>
 
-        <a href='/posts/create'>投稿作成画面</a>
-        
+        <a href='/posts/create/semi'>ゼミ投稿作成画面</a>
+        <a href='/posts/create/circle'>サークル投稿作成画面</a>
         
 
         <div>
