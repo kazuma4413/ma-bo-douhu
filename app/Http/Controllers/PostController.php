@@ -43,31 +43,38 @@ class PostController extends Controller
         return redirect('/posts/' . $post->id);
     }
     public function search(Request $request)
-        {
+    {
         $keyword = $request->input('keyword');
         $judge = $request->input('judge');
         $query = Post::query();
         if(!empty($keyword) && $judge == '1'){
             $query->where('title', 'LIKE', "%{$keyword}%",'AND','judge','=',$judge)
-                        ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
-                        }
+                  ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
+        }
         elseif(!empty($keyword) && $judge=='2'){
             $query->where('title', 'LIKE', "%{$keyword}%",'AND','judge','=',$judge)
-            ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
+                  ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
         }
         elseif(empty($keyword) && $judge=='1'){
             $query->where('title', 'LIKE', "%{$keyword}%",'AND','judge','=',$judge)
-                        ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
+                  ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
         }
         elseif(empty($keyword) && $judge=='2'){
             $query->where('title', 'LIKE', "%{$keyword}%",'AND','judge','=',$judge)
-                        ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
+                  ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
         }
 
         $posts = $query->get();
         
         return view('posts/index', compact('posts', 'keyword'));
-        }
+    }
+    
+    public function delete(Post $post)
+    {
+        $post->delete();
+        
+        return redirect('/');
+    }
     
         
 
