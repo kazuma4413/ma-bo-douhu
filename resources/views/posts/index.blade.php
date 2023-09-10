@@ -4,9 +4,11 @@
             チーム開発
          </x-slot>
         <h1>チーム開発会へようこそ！</h1>
+
         <a href='/posts/create'>投稿作成画面</a>
         
         
+
         <div>
             @foreach ($posts as $post)
                 <div style='border:solid 1px; margin-bottom: 10px;'>
@@ -17,9 +19,7 @@
                 </div>
             @endforeach
         </div>
-        <div>
-            {{ $posts->links() }}
-        </div>
+        
         </x-app-layout>
     </body>
 </html>
