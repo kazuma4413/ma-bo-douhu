@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -16,7 +17,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return view('posts/show')->with(['post' => $post]);
+        return view('posts/show')->with(['post' => $post, 'comments' => $post->comments()->get()]);
     }
 
    public function semi_create(Category $category)
@@ -107,6 +108,14 @@ class PostController extends Controller
         return redirect('/');
     }
     
+    public function comment(Comment $comment, Post $post, Request $request){
+        $input = $request['comments'];
+        $input += ['user_id' => Auth::id()];
+        $input += ['post_id' => $post->id];
+        $comment->fill($input)->save();
         
+        dd($comment);
+        return redirect('/posts/' . $post->id);
+    }    
 
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-
-    <x-app-layout>
+<x-app-layout>
         
          <x-slot name="header">
         　チーム開発
@@ -22,7 +21,20 @@
                 <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
             </div>
         @endif
+        <form action="/{{ $post->id }}/comment" method="post">
+            @csrf
+            <h3>コメント</h3>
+            <textarea name="comments[body]"></textarea>
+            <input type="submit"  value="送信"/>
+        </form>
         
+        <div>
+            <h3>コメント一覧</h3>
+            @foreach($comments as $comment)
+                <p>・{{ $comment->body }}</p>
+                <p>コメントした人：{{ $comment->user->name}}</p>
+            @endforeach
+        </div>
         <div>
             <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
             <a href="/">戻る</a>
