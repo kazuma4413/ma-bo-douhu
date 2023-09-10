@@ -55,11 +55,11 @@ class PostController extends Controller
             $query->where('title', 'LIKE', "%{$keyword}%",'AND','judge','=',$judge)
             ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
         }
-        elseif(empty($keyword) && $judge=='1'){
+        elseif(empty($keyword)){
             $query->where('title', 'LIKE', "%{$keyword}%",'AND','judge','=',$judge)
                         ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
         }
-        elseif(empty($keyword) && $judge=='2'){
+        elseif(empty($keyword)){
             $query->where('title', 'LIKE', "%{$keyword}%",'AND','judge','=',$judge)
                         ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
         }
