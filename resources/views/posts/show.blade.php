@@ -11,6 +11,7 @@
                 <div class="p-6 text-gray-900">
         <h1>詳細画面</h1>
         <div>
+            <p>大学：{{ $post->college }}</p>
             <p>タイトル：{{ $post->title }}</p>
             <p>本文：{{ $post->body }}</p>
             <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
