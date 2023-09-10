@@ -18,16 +18,46 @@ class PostController extends Controller
         return view('posts/show')->with(['post' => $post]);
     }
 
-    public function create(Category $category)
+   public function semi_create(Category $category)
+   {
+
+        $semiCategory = $category -> where("judge", 1)-> get();
+        return view('posts/semi_create')->with(['categories' => $semiCategory]);
+    }
+    
+    
+     public function circle_create(Category $category)
     {
-        return view('posts/create')->with(['categories' => $category->get()]);
+         $circleCategory = $category -> where("judge", 2)-> get();
+        return view('posts/circle_create')->with(['categories' => $circleCategory]);
+    }
+    
+     public function category_create(Category $category)
+    {
+        return view('posts/category_create')->with(['categories' => $category->get()]);
+     
     }
 
     public function store(Post $post, Request $request)
     {
-        $input = $request['post'];
+
+         $input = $request['post'];
+         if($request->file('image')){
+        $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $input += ['image_url' => $image_url];
+         }
+        $input += ['judge' => 1];
+        $input += ['user_id' => Auth::id()];
+
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
+    }
+    
+     public function category_store(Category $category, Request $request)
+    {
+        $input = $request['category'];
+        $category->fill($input)->save();
+        return redirect('/' );
     }
 
     public function edit(Post $post)

@@ -18,4 +18,9 @@ class Category extends Model
     {
         return $this->posts()->with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+    
+     protected $fillable = [
+        'name',
+        'judge',
+    ];
 }
