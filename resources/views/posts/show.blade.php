@@ -16,7 +16,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-        <h1>詳細画面</h1>
+        <h1 style="font-size:30px;">詳細画面</h1>
         
         <div style='border:solid 1px; margin-bottom: 10px;'>
             <p>大学：{{ $post->college }}</p>
@@ -32,21 +32,22 @@
         @endif
         <form action="/{{ $post->id }}/comment" method="post">
             @csrf
-            <h3>コメント</h3>
+            <h3>コメントをする</h3>
             <textarea name="comments[body]"></textarea>
             <input type="submit"  value="送信"/>
         </form>
         
-        <div>
+        <div style="border:solid 1px;">
             <h3>コメント一覧</h3>
             @foreach($comments as $comment)
-                <p>・{{ $comment->body }}</p>
                 <p>コメントした人：{{ $comment->user->name}}</p>
+                <p>　　  コメント：{{ $comment->body }}</p>
+                
             @endforeach
         </div>
         <div>
-            <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
-            <a href="/">戻る</a>
+            <p class="edit">[<a href="/posts/{{ $post->id }}/edit" style="color:green">編集</a>]</p>
+            <a href="/" style="color:blue">戻る</a>
         </div>
             </div>
             </div>
