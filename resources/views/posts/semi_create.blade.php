@@ -7,9 +7,9 @@
     <body>
         <x-app-layout>
     <x-slot name="header">
-        　　チーム開発
+        　　ゼミ紹介
         　　 </x-slot>
-        <h1>チーム開発会へようこそ！</h1>
+        <h1 style="font-size:25px; margin:20px">ようこそ！</h1>
         <h2>ゼミ投稿作成</h2>
         <form action="/posts/store/1" method="POST" enctype="multipart/form-data" >
             @csrf
