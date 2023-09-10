@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
-use Cloudinary;
-use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -20,25 +18,14 @@ class PostController extends Controller
         return view('posts/show')->with(['post' => $post]);
     }
 
-    public function semi_create(Category $category)
+    public function create(Category $category)
     {
-        return view('posts/semi_create')->with(['categories' => $category->get()]);
-    }
-    
-     public function circle_create(Category $category)
-    {
-        return view('posts/circle_create')->with(['categories' => $category->get()]);
+        return view('posts/create')->with(['categories' => $category->get()]);
     }
 
-    public function store($judge, Post $post, Request $request)
+    public function store(Post $post, Request $request)
     {
-         $input = $request['post'];
-         if($request->file('image')){
-        $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-        $input += ['image_url' => $image_url];
-         }
-        $input += ['judge' => $judge];
-        $input += ['user_id' => Auth::id()];
+        $input = $request['post'];
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
     }
@@ -58,12 +45,20 @@ class PostController extends Controller
     public function search(Request $request)
         {
         $keyword = $request->input('keyword');
-
+        $judge = $request->input('judge');
         $query = Post::query();
-
-        if(!empty($keyword)) {
-            $query->where('title', 'LIKE', "%{$keyword}%")
-                ->orWhere('body', 'LIKE', "%{$keyword}%");
+        if(!empty($keyword) &&　$judge=='1'){
+            $query->where('title', 'LIKE', "%{$keyword}%",'AND','judge','=',$judge)
+                        ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
+                        }
+        elseif(!empty($keyword) &&　$judge=='2'){
+            $query->where('judge','=',$judge);
+        }
+        elseif(empty($keyword) &&　$judge=='1'){
+            $query->where('judge','=',$judge);
+        }
+        elseif(empty($keyword) &&　$judge=='2'){
+            $query->where('judge','=',$judge);
         }
 
         $posts = $query->get();
