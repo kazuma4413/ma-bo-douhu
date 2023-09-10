@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
+use Cloudinary;
 
 class PostController extends Controller
 {

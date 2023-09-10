@@ -14,6 +14,10 @@
             <form action="/posts/{{ $post->id }}" method="POST">
                 @csrf
                 @method('PUT')
+                <div class='content__college'>
+                    <h2>大学名</h2>
+                    <input type='text' name='post[college]' value="{{ $post->title }}">
+                </div>
                 <div class='content__title'>
                     <h2>タイトル</h2>
                     <input type='text' name='post[title]' value="{{ $post->title }}">
