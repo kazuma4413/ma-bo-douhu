@@ -45,10 +45,21 @@ class PostController extends Controller
     public function search(Request $request)
         {
         $keyword = $request->input('keyword');
-
+        $judge = $request->input('judge');
         $query = Post::query();
-
-        if(!empty($keyword)) {
+        if(!empty($keyword) &&　$judge=='1'){
+            $query->where('judge','=',$judge);
+        }
+        elseif(!empty($keyword) &&　$judge=='2'){
+            $query->where('judge','=',$judge);
+        }
+        elseif(empty($keyword) &&　$judge=='1'){
+            $query->where('judge','=',$judge);
+        }
+        elseif(empty($keyword) &&　$judge=='2'){
+            $query->where('judge','=',$judge);
+        }
+        elseif(!empty($keyword)) {
             $query->where('title', 'LIKE', "%{$keyword}%")
                 ->orWhere('body', 'LIKE', "%{$keyword}%");
         }

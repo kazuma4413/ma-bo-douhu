@@ -6,6 +6,9 @@
         <h1>チーム開発会へようこそ！</h1>
         <div>
             <form action="{{ route('search') }}" method="GET">
+            
+            <input class="judge" type="radio" id="judge" name="judge" value="1">ゼミ
+            <input class="judge" type="radio" id="judge" name="judge" value="2">サークル<br>
             <input type="text" name="keyword" >
             <input type="submit" value="検索">
             </form>
