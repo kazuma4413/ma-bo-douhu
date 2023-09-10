@@ -16,6 +16,8 @@
         </div>
         <a href='/posts/create/semi' style='margin-left:20px; border:solid 1px; font-size:20px; color='>ゼミ投稿作成画面</a>
         <a href='/posts/create/circle' style='margin-left:20px; border:solid 1px;font-size:20px'>サークル投稿作成画面</a>
+        <a href='/category'>カテゴリー作成画面</a>
+
         
 
         <div>
@@ -26,9 +28,24 @@
                     </p>
                     <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
                 </div>
+                <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" onclick="deletePost({{ $post->id }})">delete</button> 
+                </form>
             @endforeach
         </div>
         
-        </x-app-layout>
-    </body>
+        <script>
+           function deletePost(id) {
+               'use strict'
+
+               if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                   document.getElementById(`form_${id}`).submit();
+               }
+            }
+        </script>
+        
+    </x-app-layout>
+  </body>
 </html>
