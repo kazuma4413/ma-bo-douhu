@@ -4,7 +4,15 @@
             チーム開発
          </x-slot>
         <h1>チーム開発会へようこそ！</h1>
-
+         <div>
+            <form action="{{ route('search') }}" method="GET">
+            
+            <input class="judge" type="radio" id="judge" name="judge" value="1">ゼミ
+            <input class="judge" type="radio" id="judge" name="judge" value="2">サークル<br>
+            <input type="text" name="keyword" >
+            <input type="submit" value="検索">
+            </form>
+        </div>
         <a href='/posts/create/semi'>ゼミ投稿作成画面</a>
         <a href='/posts/create/circle'>サークル投稿作成画面</a>
         
