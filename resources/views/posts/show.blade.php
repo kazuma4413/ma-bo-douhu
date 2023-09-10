@@ -1,17 +1,14 @@
 <!DOCTYPE HTML>
-<html lang="{{ str_replace("_", "-", app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Posts</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
-    <body>
-        <x-app-layout>
-    <x-slot name="header">
+
+    <x-app-layout>
+        
+         <x-slot name="header">
         　チーム開発
         　 </x-slot>
+        　  <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
         <h1>詳細画面</h1>
         <div>
             <p>タイトル：{{ $post->title }}</p>
@@ -29,6 +26,9 @@
             <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
             <a href="/">戻る</a>
         </div>
-        </x-app-layout>
-    </body>
-</html>
+            </div>
+            </div>
+        </div>
+    </div>
+    </x-app-layout>
+ 
