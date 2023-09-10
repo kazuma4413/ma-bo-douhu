@@ -10,10 +10,10 @@
     <body>
         <x-app-layout>
     <x-slot name="header">
-        　チーム開発
+        　ゼミ・サークル紹介
         　 </x-slot>
         <h1>詳細画面</h1>
-        <div>
+        <div style='border:solid 1px; margin-bottom: 10px;'>
             <p>タイトル：{{ $post->title }}</p>
             <p>本文：{{ $post->body }}</p>
             <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
