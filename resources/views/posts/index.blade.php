@@ -4,14 +4,11 @@
             チーム開発
          </x-slot>
         <h1>チーム開発会へようこそ！</h1>
-        <div>
-            <form action="{{ route('search') }}" method="GET">
-            <input type="text" name="keyword" >
-            <input type="submit" value="検索">
-            </form>
-        </div>
-        <h2>投稿一覧画面</h2>
-        <a href='/posts/create'>新規投稿</a>
+
+        <a href='/posts/create'>投稿作成画面</a>
+        
+        
+
         <div>
             @foreach ($posts as $post)
                 <div style='border:solid 1px; margin-bottom: 10px;'>
