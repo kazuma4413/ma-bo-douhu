@@ -8,10 +8,10 @@
      
         <x-app-layout>
     <x-slot name="header">
-        　　チーム開発
+        　　サークル紹介
         　　 </x-slot>
         
-        <h2 style="font-size:30px; color:red" >サークル投稿作成</h2>
+        <h2 style="font-size:30px; color:red;  margin:20px" >サークル投稿作成</h2>
         <form action="/posts/store/2" method="POST" enctype="multipart/form-data"  >
             @csrf
             <div>
