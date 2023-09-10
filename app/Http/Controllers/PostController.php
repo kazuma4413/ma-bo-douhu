@@ -47,18 +47,21 @@ class PostController extends Controller
         $keyword = $request->input('keyword');
         $judge = $request->input('judge');
         $query = Post::query();
-        if(!empty($keyword) &&　$judge=='1'){
+        if(!empty($keyword) && $judge == '1'){
             $query->where('title', 'LIKE', "%{$keyword}%",'AND','judge','=',$judge)
                         ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
                         }
-        elseif(!empty($keyword) &&　$judge=='2'){
-            $query->where('judge','=',$judge);
+        elseif(!empty($keyword) && $judge=='2'){
+            $query->where('title', 'LIKE', "%{$keyword}%",'AND','judge','=',$judge)
+            ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
         }
-        elseif(empty($keyword) &&　$judge=='1'){
-            $query->where('judge','=',$judge);
+        elseif(empty($keyword) && $judge=='1'){
+            $query->where('title', 'LIKE', "%{$keyword}%",'AND','judge','=',$judge)
+                        ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
         }
-        elseif(empty($keyword) &&　$judge=='2'){
-            $query->where('judge','=',$judge);
+        elseif(empty($keyword) && $judge=='2'){
+            $query->where('title', 'LIKE', "%{$keyword}%",'AND','judge','=',$judge)
+                        ->orWhere('body', 'LIKE', "%{$keyword}%" ,'AND' , 'judge','=',$judge);
         }
 
         $posts = $query->get();
