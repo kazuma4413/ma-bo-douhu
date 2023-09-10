@@ -7,6 +7,7 @@
 
         <a href='/posts/create/semi'>ゼミ投稿作成画面</a>
         <a href='/posts/create/circle'>サークル投稿作成画面</a>
+        <a href='/category'>カテゴリー作成画面</a>
         
 
         <div>
