@@ -114,7 +114,6 @@ class PostController extends Controller
         $input += ['post_id' => $post->id];
         $comment->fill($input)->save();
         
-        dd($comment);
         return redirect('/posts/' . $post->id);
     }    
 
