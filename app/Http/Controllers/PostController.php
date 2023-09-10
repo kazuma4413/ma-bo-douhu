@@ -20,19 +20,24 @@ class PostController extends Controller
         return view('posts/show')->with(['post' => $post]);
     }
 
-    public function create(Category $category)
+    public function semi_create(Category $category)
     {
-        return view('posts/create')->with(['categories' => $category->get()]);
+        return view('posts/semi_create')->with(['categories' => $category->get()]);
+    }
+    
+     public function circle_create(Category $category)
+    {
+        return view('posts/circle_create')->with(['categories' => $category->get()]);
     }
 
-    public function store(Post $post, Request $request)
+    public function store($judge, Post $post, Request $request)
     {
          $input = $request['post'];
          if($request->file('image')){
         $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
         $input += ['image_url' => $image_url];
          }
-        $input += ['judge' => 1];
+        $input += ['judge' => $judge];
         $input += ['user_id' => Auth::id()];
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
