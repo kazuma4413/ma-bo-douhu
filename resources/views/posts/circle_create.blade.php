@@ -14,6 +14,11 @@
         <form action="/posts/store/2" method="POST" enctype="multipart/form-data" >
             @csrf
             <div>
+                <h2>大学</h2>
+                <input type="text" name="post[college]" placeholder="大学名" value="{{ old('post.title') }}"/>
+                <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
+            </div>
+            <div>
                 <h2>タイトル</h2>
                 <input type="text" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>
                 <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
